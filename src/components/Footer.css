@@ -1,6 +1,9 @@
 #footer {
     height: 15dvh;
     background-color: var(--dark);
+    position : relative;
+    overflow: hidden;
+    bottom: 0;
 }
 
 .sub-container {
