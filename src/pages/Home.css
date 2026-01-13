@@ -1,0 +1,12 @@
+#home {
+    padding-top: 5dvh;
+    height: 95dvh;
+    text-align: center;
+}
+
+#projects,
+#about-me,
+#contact-me {
+    height: 95dvh;
+    text-align: center;
+}

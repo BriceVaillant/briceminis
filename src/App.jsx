@@ -1,14 +1,13 @@
-import './App.css'
-import Navbar from "./components/Navbar";
+// src/App.jsx
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRoutes from "./AppRoutes";
 
 function App() {
-
   return (
-    <div className="main-container">
-      <Navbar />
-      <h1>Brice Vaillant</h1>
-    </div>
+    <Router>
+      <AppRoutes />
+    </Router>
   );
 }
 
-export default App
+export default App;
