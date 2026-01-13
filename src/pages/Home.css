@@ -1,12 +1,39 @@
 #home {
-    padding-top: 5dvh;
-    height: 95dvh;
-    text-align: center;
+  padding-top: 5dvh;
+  height: 145dvh;
+  text-align: center;
+}
+#about-me {
+  height: 145dvh;
+  text-align: center;
+}
+#contact-me {
+  height: 95dvh;
+  text-align: center;
 }
 
-#projects,
-#about-me,
-#contact-me {
-    height: 95dvh;
-    text-align: center;
+#projects {
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#projects-container {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100%;
+  width: max-content;
+  gap: 0.5vw;
+}
+
+#projects .panel {
+  position: relative;
+  height: 100%;
+  width: 24vw;
+  aspect-ratio: 3456 / 5184;
+  object-fit: cover;
+  flex-shrink: 0;
 }

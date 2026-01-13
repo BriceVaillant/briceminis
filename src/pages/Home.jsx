@@ -3,12 +3,14 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollToPlugin, ScrollTrigger, ScrollSmoother } from "gsap/all";
 
+import Footer from "../components/Footer";
 import "./Home.css";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin, ScrollSmoother);
 
 export default function Home() {
   const container = useRef();
+  const cloudinary_name = "dxrlfbw2k";
 
   useGSAP(
     () => {
@@ -21,7 +23,22 @@ export default function Home() {
       });
 
       ScrollTrigger.defaults({
-        markers: false,
+        markers: true,
+      });
+
+      const track = document.querySelector("#projects-container");
+
+      gsap.to(track, {
+        x: () => -(track.scrollWidth - window.innerWidth),
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#projects",
+          start: "top top",
+          pin: true,
+          scrub: 1,
+          end: () => "+=" + (track.scrollWidth - window.innerWidth),
+          invalidateOnRefresh: true,
+        },
       });
     },
     { scope: container }
@@ -39,13 +56,44 @@ export default function Home() {
           <p>This is the about page content.</p>
         </div>
         <div id="projects">
-          <h2>projects Page</h2>
-          <p>This is the Home page content.</p>
+          <div id="projects-container">
+            <img
+              className="panel"
+              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig3_00.jpg`}
+              alt="mini figure"
+            />
+            <img
+              className="panel"
+              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig1_00.jpg`}
+              alt="mini figure"
+            />
+            <img
+              className="panel"
+              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig15_00.jpg`}
+              alt="mini figure"
+            />
+            <img
+              className="panel"
+              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig2_00.jpg`}
+              alt="mini figure"
+            />
+            <img
+              className="panel"
+              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig4_00.jpg`}
+              alt="mini figure"
+            />
+            <img
+              className="panel"
+              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig11_00.jpg`}
+              alt="mini figure"
+            />
+          </div>
         </div>
         <div id="contact-me">
           <h2>contact Page</h2>
           <p>This is the contact page content.</p>
         </div>
+        <Footer />
       </div>
     </div>
   );

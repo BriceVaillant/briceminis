@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Gallery from "./pages/Gallery";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+
 
 export default function AppRoutes() {
 
@@ -15,7 +15,6 @@ return (
       <Route path="/" element={<Home />} />
       <Route path="/gallery" element={<Gallery />} />
     </Routes>
-    <Footer />
   </>
 );
 }
