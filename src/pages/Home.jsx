@@ -13,6 +13,7 @@ export default function Home() {
   const [images, setImages] = useState([]);
   const cloudinary_name = "dxrlfbw2k";
   const tag = "display";
+  const maxImages = 10;
 
   useEffect(() => {
     fetch(
@@ -30,7 +31,7 @@ export default function Home() {
   const handlePressStart = (e) => {
     const panel = e.currentTarget;
     const otherPanels = document.querySelectorAll(
-      "#projects .panel:not(:last-child)"
+      "#projects .panel-container:not(:last-child)"
     );
     const imgWithin = document.querySelectorAll(
       "#projects .panel:not(:last-child) img"
@@ -43,13 +44,13 @@ export default function Home() {
   const handlePressEnd = (e) => {
     const panel = e.currentTarget;
     const otherPanels = document.querySelectorAll(
-      "#projects .panel:not(:last-child)"
+      "#projects .panel-container:not(:last-child)"
     );
     const imgWithin = document.querySelectorAll(
       "#projects .panel:not(:last-child) img"
     );
     otherPanels.forEach((p) => p.classList.remove("lastpanel-clicked"));
-    imgWithin.forEach((p) => p.classList.remove ("img-lastpanel-clicked"));
+    imgWithin.forEach((p) => p.classList.remove("img-lastpanel-clicked"));
     panel.classList.remove("active");
   };
 
@@ -58,7 +59,7 @@ export default function Home() {
       ScrollSmoother.create({
         wrapper: "#smooth-wrapper",
         content: "#smooth-content",
-        smooth: 1.5,
+        smooth: 1.2,
         smoothTouch: 0.1,
         effects: true,
       });
@@ -68,7 +69,21 @@ export default function Home() {
       });
 
       const track = document.querySelector("#projects-container");
+      const panels = gsap.utils.toArray("#projects .panel");
+      const panelsContainer = gsap.utils.toArray("#projects .panel-container");
 
+      // gsap.to(track, {
+      //   x: () => -(track.scrollWidth - window.innerWidth),
+      //   ease: "none",
+      //   scrollTrigger: {
+      //     trigger: "#projects",
+      //     start: "top top",
+      //     pin: true,
+      //     scrub: 1,
+      //     end: () => "+=" + (track.scrollWidth - window.innerWidth + 300),
+      //     invalidateOnRefresh: true,
+      //   },
+      // });
       gsap.to(track, {
         x: () => -(track.scrollWidth - window.innerWidth),
         ease: "none",
@@ -77,8 +92,52 @@ export default function Home() {
           start: "top top",
           pin: true,
           scrub: 1,
-          end: () => "+=" + (track.scrollWidth - window.innerWidth + 300),
+          end: () => "+=" + (track.scrollWidth - window.innerWidth + 100),
           invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const velocity = self.getVelocity();
+            const intensity = 35; // higher means mvm lower
+            const moveAmount = velocity / intensity;
+            const clampedMove = gsap.utils.clamp(-60, 60, moveAmount);
+
+            gsap.to(panelsContainer, {
+              x: -clampedMove, //move left
+              duration: 0.2,
+              ease: "power2.out",
+              overwrite: "auto",
+            });
+
+            // gsap.to(panelsContainer, {
+            //   scaleX: 1.02,
+            //   transformOrigin: "50% 50%",
+            //   ease: "power4.out",
+            //   overwrite: "auto",
+            // });
+
+            gsap.to(panels, {
+              x: clampedMove, //move right
+              duration: 0.2,
+              ease: "power2.out",
+              overwrite: "auto",
+            });
+          },
+          onScrubComplete: () => {
+            gsap.to(panels, {
+              x: 0,
+              duration: 0.4,
+              ease: "power3.out",
+            });
+            gsap.to(panelsContainer, {
+              x: 0,
+              duration: 0.4,
+              ease: "power3.out",
+            });
+            // gsap.to(panelsContainer, {
+            //   scaleX: 1,
+            //   duration: 0.5,
+            //   ease: "power4.out",
+            // });
+          },
         },
       });
     },
@@ -98,63 +157,89 @@ export default function Home() {
         </div>
         <div id="projects">
           <div id="projects-container">
-            {/* {images.map((img) => (
+            {/* {images.slice(0, maxImages).map((img, index, arr) => {
+              const isLast = index === arr.length - 1;
+              return (
+                <div className="panel-container">
                 <img
+                  key={img.public_id}
                   className="panel"
                   src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v${img.version}/${img.public_id}.${img.format}`}
                   alt={img.public_id}
+                  onMouseDown={isLast ? handlePressStart : undefined}
+                  onMouseUp={isLast ? handlePressEnd : undefined}
+                  onMouseLeave={isLast ? handlePressEnd : undefined}
+                  onTouchStart={isLast ? handlePressStart : undefined}
+                  onTouchEnd={isLast ? handlePressEnd : undefined}
                 />
-            ))} */}
-            <img
-              className="panel"
-              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig3_00.jpg`}
-              alt="mini figure"
-            />
-            <img
-              className="panel"
-              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig1_00.jpg`}
-              alt="mini figure"
-            />
-            <img
-              className="panel"
-              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig15_00.jpg`}
-              alt="mini figure"
-            />
-            <img
-              className="panel"
-              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig2_00.jpg`}
-              alt="mini figure"
-            />
-            <img
-              className="panel"
-              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig4_00.jpg`}
-              alt="mini figure"
-            />
-            <img
-              className="panel"
-              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig11_00.jpg`}
-              alt="mini figure"
-            />
-            <img
-              className="panel"
-              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig19_00.jpg`}
-              alt="mini figure"
-            />
-            <img
-              className="panel"
-              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig18_00.jpg`}
-              alt="mini figure"
-            />
-            <img
-              className="panel"
-              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig17_00.jpg`}
-              alt="mini figure"
-              onMouseDown={handlePressStart}
-              onMouseUp={handlePressEnd}
-              onMouseLeave={handlePressEnd}
-              onTouchStart={handlePressStart}
-              onTouchEnd={handlePressEnd}
-            />
+                </div>
+              );
+            })} */}
+            <div className="panel-container">
+              <img
+                className="panel"
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig1_00.jpg`}
+              />
+            </div>
+            <div className="panel-container">
+              <img
+                className="panel"
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig2_00.jpg`}
+              />
+            </div>
+            <div className="panel-container">
+              <img
+                className="panel"
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig3_00.jpg`}
+              />
+            </div>
+            <div className="panel-container">
+              <img
+                className="panel"
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig4_00.jpg`}
+              />
+            </div>
+            <div className="panel-container">
+              <img
+                className="panel"
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig5_00.jpg`}
+              />
+            </div>
+            <div className="panel-container">
+              <img
+                className="panel"
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig6_00.jpg`}
+              />
+            </div>
+            <div className="panel-container">
+              <img
+                className="panel"
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig7_00.jpg`}
+              />
+            </div>
+            <div className="panel-container">
+              <img
+                className="panel"
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig8_00.jpg`}
+              />
+            </div>
+            <div className="panel-container">
+              <img
+                className="panel"
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig9_00.jpg`}
+              />
+            </div>
+            <div className="panel-container">
+              <img
+                className="panel"
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710566/IMG_fig2_00.jpg`}
+                onMouseDown={handlePressStart}
+                onMouseUp={handlePressEnd}
+                onMouseLeave={handlePressEnd}
+                onTouchStart={handlePressStart}
+                onTouchEnd={handlePressEnd}
+              />
+            </div>
           </div>
         </div>
         <div id="contact-me">
