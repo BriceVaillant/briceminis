@@ -10,6 +10,7 @@
   --light: #bdbbaf;
   --dark: #696760;
   --darker: #312d2b;
+  --delay: 0.04s;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

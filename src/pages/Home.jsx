@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollToPlugin, ScrollTrigger, ScrollSmoother } from "gsap/all";
@@ -10,7 +10,48 @@ gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin, ScrollSmoother);
 
 export default function Home() {
   const container = useRef();
+  const [images, setImages] = useState([]);
   const cloudinary_name = "dxrlfbw2k";
+  const tag = "display";
+
+  useEffect(() => {
+    fetch(
+      `https://res.cloudinary.com/${cloudinary_name}/image/list/${tag}.json`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setImages(data.resources);
+      })
+      .catch((error) => {
+        console.error("Error fetching images from Cloudinary:", error);
+      });
+  }, [cloudinary_name]);
+
+  const handlePressStart = (e) => {
+    const panel = e.currentTarget;
+    const otherPanels = document.querySelectorAll(
+      "#projects .panel:not(:last-child)"
+    );
+    const imgWithin = document.querySelectorAll(
+      "#projects .panel:not(:last-child) img"
+    );
+    otherPanels.forEach((p) => p.classList.add("lastpanel-clicked"));
+    imgWithin.forEach((p) => p.classList.add("img-lastpanel-clicked"));
+    panel.classList.add("active");
+  };
+
+  const handlePressEnd = (e) => {
+    const panel = e.currentTarget;
+    const otherPanels = document.querySelectorAll(
+      "#projects .panel:not(:last-child)"
+    );
+    const imgWithin = document.querySelectorAll(
+      "#projects .panel:not(:last-child) img"
+    );
+    otherPanels.forEach((p) => p.classList.remove("lastpanel-clicked"));
+    imgWithin.forEach((p) => p.classList.remove ("img-lastpanel-clicked"));
+    panel.classList.remove("active");
+  };
 
   useGSAP(
     () => {
@@ -36,7 +77,7 @@ export default function Home() {
           start: "top top",
           pin: true,
           scrub: 1,
-          end: () => "+=" + (track.scrollWidth - window.innerWidth),
+          end: () => "+=" + (track.scrollWidth - window.innerWidth + 300),
           invalidateOnRefresh: true,
         },
       });
@@ -57,6 +98,13 @@ export default function Home() {
         </div>
         <div id="projects">
           <div id="projects-container">
+            {/* {images.map((img) => (
+                <img
+                  className="panel"
+                  src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v${img.version}/${img.public_id}.${img.format}`}
+                  alt={img.public_id}
+                />
+            ))} */}
             <img
               className="panel"
               src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig3_00.jpg`}
@@ -86,6 +134,26 @@ export default function Home() {
               className="panel"
               src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig11_00.jpg`}
               alt="mini figure"
+            />
+            <img
+              className="panel"
+              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig19_00.jpg`}
+              alt="mini figure"
+            />
+            <img
+              className="panel"
+              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig18_00.jpg`}
+              alt="mini figure"
+            />
+            <img
+              className="panel"
+              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710557/IMG_fig17_00.jpg`}
+              alt="mini figure"
+              onMouseDown={handlePressStart}
+              onMouseUp={handlePressEnd}
+              onMouseLeave={handlePressEnd}
+              onTouchStart={handlePressStart}
+              onTouchEnd={handlePressEnd}
             />
           </div>
         </div>

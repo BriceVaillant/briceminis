@@ -2,6 +2,7 @@
   padding-top: 5dvh;
   height: 145dvh;
   text-align: center;
+  
 }
 #about-me {
   height: 145dvh;
@@ -14,7 +15,6 @@
 
 #projects {
   height: 100dvh;
-  width: 100%;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -26,14 +26,46 @@
   flex-wrap: nowrap;
   height: 100%;
   width: max-content;
+  flex-direction: row;
+  padding-right: 0.5vw;
+  padding-left: 0.5vw;
   gap: 0.5vw;
 }
 
 #projects .panel {
   position: relative;
   height: 100%;
-  width: 24vw;
+  width: 20vw;
   aspect-ratio: 3456 / 5184;
   object-fit: cover;
   flex-shrink: 0;
+}
+
+#projects .panel:hover {
+  cursor: pointer;
+  
+}
+#projects .panel:active {
+  width: 35vw;
+  transition: width 0.5s ease-out;
+  transition-delay: var(--delay);
+}
+
+#projects .panel:last-child:active {
+  width: 40vw;
+  margin-left: -20vw;
+  transition: width 0.5s ease-out, margin-left 0.5s ease-out;
+  transition-delay: var(--delay);
+}
+
+.lastpanel-clicked {
+  transform: translateX(-20vw);
+  transition: transform 0.5s ease-out;
+  transition-delay: var(--delay);
+}
+
+.img-lastpanel-clicked {
+  transform: translateX(-22vw);
+  transition: transform 0.8s ease-out;
+  transition-delay: var(--delay);
 }
