@@ -1,12 +1,87 @@
+:root {
+  --longdelay: 0.9s;
+  --shortdelay: 0.4s;
+}
 #home {
-    padding-top: 5dvh;
-    height: 95dvh;
-    text-align: center;
+  padding-top: 5dvh;
+  height: 145dvh;
+  text-align: center;
+  
+}
+#about-me {
+  height: 145dvh;
+  text-align: center;
+}
+#contact-me {
+  height: 95dvh;
+  text-align: center;
 }
 
-#projects,
-#about-me,
-#contact-me {
-    height: 95dvh;
-    text-align: center;
+#projects {
+  height: 100dvh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#projects-container {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100%;
+  width: max-content;
+  flex-direction: row;
+  padding-right: 0.5vw;
+  padding-left: 0.5vw;
+  gap: 0.5vw;
+}
+
+#projects .panel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 20vw;
+  aspect-ratio: 3456 / 5184;
+  object-fit: cover;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: transform var(--shortdelay) ease-out , width var(--shortdelay) ease-out , margin-left var(--shortdelay) ease-out;
+}
+
+#projects .panel {
+  width: 20vw;
+  height: 100%;
+  aspect-ratio: 3456 / 5184;
+  object-fit: cover;
+  transition: transform var(--shortdelay) ease-out , width var(--shortdelay) ease-out , margin-left var(--shortdelay) ease-out;
+}
+
+
+#projects .panel-container:hover {
+  cursor: pointer;
+}
+#projects .panel:hover {
+  transform: scale(1.05);
+  transform-origin: 50% 50%;
+  object-fit: cover;
+}
+#projects .panel:active,
+#projects .panel-container:active {
+  width: 40vw;
+  transition-delay: 0.02s;
+}
+
+#projects .panel-container:last-child:active {
+  width: 40vw;
+  margin-left: -20vw;
+  transition: width var(--shortdelay) ease-out, margin-left var(--shortdelay) ease-out;
+  transition-delay: 0.02s;
+}
+
+.lastpanel-clicked {
+  transform: translateX(-20vw);
+  transition: transform var(--shortdelay) ease-out;
+  transition-delay: var(--shortdelay);
 }
