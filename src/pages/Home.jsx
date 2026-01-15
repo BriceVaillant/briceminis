@@ -55,7 +55,7 @@ export default function Home() {
       });
 
       ScrollTrigger.defaults({
-        markers: true,
+        markers: false,
       });
 
       const track = document.querySelector("#projects-container");
@@ -83,7 +83,7 @@ export default function Home() {
           <h2>Home Page</h2>
           <p>This is the Home page content.</p>
         </div>
-        <div id="about-me">
+        <div id="about">
           <h2>about Page</h2>
           <p>This is the about page content.</p>
         </div>
@@ -174,7 +174,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div id="contact-me">
+        <div id="contact">
           <h2>contact Page</h2>
           <p>This is the contact page content.</p>
         </div>
