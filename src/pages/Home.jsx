@@ -11,6 +11,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin, ScrollSmoother);
 export default function Home() {
   const container = useRef();
   const [images, setImages] = useState([]);
+  const { contextSafe } = useGSAP(() => {}, { scope: container });
   const cloudinary_name = "dxrlfbw2k";
   const tag = "display";
   const maxImages = 10;
@@ -28,30 +29,20 @@ export default function Home() {
       });
   }, [cloudinary_name]);
 
-  const handlePressStart = (e) => {
-    const panel = e.currentTarget;
+  const handlePressStart = () => {
     const otherPanels = document.querySelectorAll(
-      "#projects .panel-container:not(:last-child)"
+      ".panel-container:not(:last-child)"
     );
-    const imgWithin = document.querySelectorAll(
-      "#projects .panel:not(:last-child) img"
-    );
+
     otherPanels.forEach((p) => p.classList.add("lastpanel-clicked"));
-    imgWithin.forEach((p) => p.classList.add("img-lastpanel-clicked"));
-    panel.classList.add("active");
   };
 
-  const handlePressEnd = (e) => {
-    const panel = e.currentTarget;
+  const handlePressEnd = () => {
     const otherPanels = document.querySelectorAll(
-      "#projects .panel-container:not(:last-child)"
+      ".panel-container:not(:last-child)"
     );
-    const imgWithin = document.querySelectorAll(
-      "#projects .panel:not(:last-child) img"
-    );
+
     otherPanels.forEach((p) => p.classList.remove("lastpanel-clicked"));
-    imgWithin.forEach((p) => p.classList.remove("img-lastpanel-clicked"));
-    panel.classList.remove("active");
   };
 
   useGSAP(
@@ -69,21 +60,7 @@ export default function Home() {
       });
 
       const track = document.querySelector("#projects-container");
-      const panels = gsap.utils.toArray("#projects .panel");
-      const panelsContainer = gsap.utils.toArray("#projects .panel-container");
 
-      // gsap.to(track, {
-      //   x: () => -(track.scrollWidth - window.innerWidth),
-      //   ease: "none",
-      //   scrollTrigger: {
-      //     trigger: "#projects",
-      //     start: "top top",
-      //     pin: true,
-      //     scrub: 1,
-      //     end: () => "+=" + (track.scrollWidth - window.innerWidth + 300),
-      //     invalidateOnRefresh: true,
-      //   },
-      // });
       gsap.to(track, {
         x: () => -(track.scrollWidth - window.innerWidth),
         ease: "none",
@@ -92,52 +69,8 @@ export default function Home() {
           start: "top top",
           pin: true,
           scrub: 1,
-          end: () => "+=" + (track.scrollWidth - window.innerWidth + 100),
+          end: () => "+=" + (track.scrollWidth - window.innerWidth + 300),
           invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            const velocity = self.getVelocity();
-            const intensity = 35; // higher means mvm lower
-            const moveAmount = velocity / intensity;
-            const clampedMove = gsap.utils.clamp(-60, 60, moveAmount);
-
-            gsap.to(panelsContainer, {
-              x: -clampedMove, //move left
-              duration: 0.2,
-              ease: "power2.out",
-              overwrite: "auto",
-            });
-
-            // gsap.to(panelsContainer, {
-            //   scaleX: 1.02,
-            //   transformOrigin: "50% 50%",
-            //   ease: "power4.out",
-            //   overwrite: "auto",
-            // });
-
-            gsap.to(panels, {
-              x: clampedMove, //move right
-              duration: 0.2,
-              ease: "power2.out",
-              overwrite: "auto",
-            });
-          },
-          onScrubComplete: () => {
-            gsap.to(panels, {
-              x: 0,
-              duration: 0.4,
-              ease: "power3.out",
-            });
-            gsap.to(panelsContainer, {
-              x: 0,
-              duration: 0.4,
-              ease: "power3.out",
-            });
-            // gsap.to(panelsContainer, {
-            //   scaleX: 1,
-            //   duration: 0.5,
-            //   ease: "power4.out",
-            // });
-          },
         },
       });
     },
@@ -163,7 +96,7 @@ export default function Home() {
                 <div className="panel-container">
                 <img
                   key={img.public_id}
-                  className="panel"
+                  className="{isLast ? lastimg : ""} panel"
                   src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v${img.version}/${img.public_id}.${img.format}`}
                   alt={img.public_id}
                   onMouseDown={isLast ? handlePressStart : undefined}
@@ -231,7 +164,7 @@ export default function Home() {
             </div>
             <div className="panel-container">
               <img
-                className="panel"
+                className="panel lastimg"
                 src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710566/IMG_fig2_00.jpg`}
                 onMouseDown={handlePressStart}
                 onMouseUp={handlePressEnd}

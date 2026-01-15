@@ -1,5 +1,6 @@
 :root {
-  --delay: 0.9s;
+  --longdelay: 0.9s;
+  --shortdelay: 0.4s;
 }
 #home {
   padding-top: 5dvh;
@@ -46,7 +47,7 @@
   object-fit: cover;
   flex-shrink: 0;
   overflow: hidden;
-  transition: transform var(--delay) ease-out , width 0.4s ease-out , margin-left 0.4s ease-out;
+  transition: transform var(--shortdelay) ease-out , width var(--shortdelay) ease-out , margin-left var(--shortdelay) ease-out;
 }
 
 #projects .panel {
@@ -54,14 +55,14 @@
   height: 100%;
   aspect-ratio: 3456 / 5184;
   object-fit: cover;
-  transition: transform var(--delay) ease-out , width 0.4s ease-out , margin-left 0.4s ease-out;
+  transition: transform var(--shortdelay) ease-out , width var(--shortdelay) ease-out , margin-left var(--shortdelay) ease-out;
 }
 
 
 #projects .panel-container:hover {
-  cursor: pointer;  
+  cursor: pointer;
 }
-#projects .panel-container img:hover {
+#projects .panel:hover {
   transform: scale(1.05);
   transform-origin: 50% 50%;
   object-fit: cover;
@@ -75,18 +76,12 @@
 #projects .panel-container:last-child:active {
   width: 40vw;
   margin-left: -20vw;
-  transition: width var(--delay) ease-out, margin-left var(--delay) ease-out;
+  transition: width var(--shortdelay) ease-out, margin-left var(--shortdelay) ease-out;
   transition-delay: 0.02s;
 }
 
 .lastpanel-clicked {
   transform: translateX(-20vw);
-  transition: transform 0.5s ease-out;
-  transition-delay: var(--delay);
-}
-
-.img-lastpanel-clicked {
-  transform: translateX(-22vw);
-  transition: transform 0.5s ease-out;
-  transition-delay: var(--delay);
+  transition: transform var(--shortdelay) ease-out;
+  transition-delay: var(--shortdelay);
 }
