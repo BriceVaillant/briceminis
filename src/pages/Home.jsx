@@ -6,6 +6,7 @@ import { ScrollToPlugin, ScrollTrigger, ScrollSmoother } from "gsap/all";
 
 import Footer from "../components/Footer";
 import "./Home.css";
+import "./Projects.css";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin, ScrollSmoother);
 
