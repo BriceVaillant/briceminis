@@ -32,10 +32,8 @@ export default function Navbar() {
 
   const handleScrollTo = (targetId) => {
     if (location.pathname !== "/") {
-      // 2. If not on Home, navigate to Home with the ID attached (e.g. "/#about")
       navigate(`/${targetId}`);
     } else {
-      // 3. If already on Home, scroll immediately
       gsap.to(window, {
         duration: 0.3,
         scrollTo: {

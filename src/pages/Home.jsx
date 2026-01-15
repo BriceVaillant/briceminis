@@ -80,8 +80,19 @@ export default function Home() {
     <div className="main-container" ref={container} id="smooth-wrapper">
       <div id="smooth-content">
         <div id="home">
-          <h2>Home Page</h2>
-          <p>This is the Home page content.</p>
+        <div className="titlecontainer">
+          <h1>BRICE VAILLANT</h1>
+          </div>
+          <div className="imgcontainer">
+            <img
+              className="home-leftimg homeimg"
+              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_500,c_scale/v1767710569/IMG_fig20_00.jpg`}
+            />
+            <img
+              className="home-rightimg homeimg"
+              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_750,c_scale/v1767710569/IMG_fig15_00.jpg`}
+            />
+          </div>
         </div>
         <div id="about">
           <h2>about Page</h2>

@@ -7,9 +7,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 5dvh;
-  color: var(--darker);
-  margin: 0.2rem 2rem 0.2rem 2rem;
+  height: 10dvh;
+  background-color: var(--darker);
+  padding: 0.2rem 1rem 0.2rem 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 .navbar-name {
   background: none;
@@ -17,8 +18,8 @@
   cursor: pointer;
   font: inherit;
   padding: 0;
-  color: var(--light);
-  font-size: 2em;
+  color: var(--lighter);
+  font-size: 1.5rem;
   text-decoration: none;
   font-weight: 900;
 }
@@ -31,15 +32,14 @@
   height: 100%;
   padding: 9px;
 }
-.navbar-lead .navbarlink {
+.navbar-lead .navbar-name {
   display: inline-block;
-  transition: transform 0.2s ease, border-bottom 0.1s ease;
+  transition: transform var(--shortdelay) ease-out;
   text-decoration: none;
-  font-size: 2em;
-  color: var(--light);
+  font-size: 1.5rem;
+  color: var(--lighter);
 }
-.navbar-lead .navbarlink:hover {
-  border-bottom: 2px solid var(--darker);
+.navbar-lead .navbar-name:hover {
   transform: scale(1.04);
 }
 @media (max-width: 600px) {
