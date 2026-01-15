@@ -1,4 +1,5 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
+// import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollToPlugin, ScrollTrigger, ScrollSmoother } from "gsap/all";
@@ -10,24 +11,22 @@ gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin, ScrollSmoother);
 
 export default function Home() {
   const container = useRef();
-  const [images, setImages] = useState([]);
-  const { contextSafe } = useGSAP(() => {}, { scope: container });
+  // const [images, setImages] = useState([]);
   const cloudinary_name = "dxrlfbw2k";
-  const tag = "display";
-  const maxImages = 10;
+  // const tag = "display";
 
-  useEffect(() => {
-    fetch(
-      `https://res.cloudinary.com/${cloudinary_name}/image/list/${tag}.json`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setImages(data.resources);
-      })
-      .catch((error) => {
-        console.error("Error fetching images from Cloudinary:", error);
-      });
-  }, [cloudinary_name]);
+  // useEffect(() => {
+  //   fetch(
+  //     `https://res.cloudinary.com/${cloudinary_name}/image/list/${tag}.json`
+  //   )
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setImages(data.resources);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching images from Cloudinary:", error);
+  //     });
+  // }, [cloudinary_name]);
 
   const handlePressStart = () => {
     const otherPanels = document.querySelectorAll(
