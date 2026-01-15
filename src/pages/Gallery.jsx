@@ -1,10 +1,93 @@
+// src/pages/Projects.jsx
 import "./Gallery.css";
+import gsap from "gsap";
+import { useRef, useState, useEffect } from "react";
+import { useGSAP } from "@gsap/react";
+import { ScrollToPlugin, ScrollTrigger } from "gsap/all";
+
+import PictureDetails from "../components/PictureDetails";
+gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin);
 
 export default function Gallery() {
+  const gallery = useRef();
+  const [images, setImages] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [showPictureDetails, setShowPictureDetails] = useState(false);
+  const cloudinary_name = "dxrlfbw2k";
+  const tag = "display";
+
+  useEffect(() => {
+    fetch(
+      `https://res.cloudinary.com/${cloudinary_name}/image/list/${tag}.json`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setImages(data.resources);
+      })
+      .catch((error) => {
+        console.error("Error fetching images from Cloudinary:", error);
+      });
+  }, [cloudinary_name]);
+
+  const handleImgClick = (clickedImage) => {
+    let result = /IMG_([A-Za-z0-9]+)_00/i.exec(clickedImage.public_id);
+
+    if (result && result[1]) {
+      setSelectedImage(result[1]);
+      setShowPictureDetails(true);
+    }
+  };
+
+  useGSAP(
+    () => {
+      ScrollTrigger.defaults({
+        markers: false,
+      });
+
+      const cards = gsap.utils.toArray(".miniature-card");
+
+      if (cards.length > 0) {
+        ScrollTrigger.batch(cards, {
+          onEnter: (batch) => {
+            gsap.to(batch, {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              stagger: 0.15,
+              ease: "power3.out",
+              overwrite: true,
+            });
+          },
+          start: "top 90%",
+          once: true,
+        });
+      }
+    },
+    { scope: gallery, dependencies: [images] }
+  );
+
   return (
-    <div id="gallery">
-      <h2>Gallery Page</h2>
-      <p>This is the gallery page content.</p>
-    </div>
+    <section id="gallery" ref={gallery}>
+      <div className="minis-pictures-grid">
+        {images.map((img) => (
+          <div className="miniature-card" key={img.public_id}>
+            <img
+              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/v${img.version}/${img.public_id}.${img.format}`}
+              alt={img.public_id}
+              width={img.width / 10}
+              height={img.height / 10}
+              onClick={() => handleImgClick(img)}
+            />
+          </div>
+        ))}
+      </div>
+      {showPictureDetails && (
+        <PictureDetails
+          image={selectedImage}
+          key={selectedImage}
+          onClose={() => setShowPictureDetails(false)}
+        />
+      )}
+    </section>
   );
 }

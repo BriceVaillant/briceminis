@@ -1,28 +1,54 @@
 // src/components/Navbar.jsx
 import "./Navbar.css";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useRef } from "react";
 import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 import { ScrollToPlugin } from "gsap/all";
 
 gsap.registerPlugin(ScrollToPlugin);
 
 export default function Navbar() {
+  const container = useRef();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+
+  useGSAP(
+    () => {
+      if (location.pathname === "/" && location.hash) {
+        gsap.to(window, {
+          duration: 0.2,
+          scrollTo: {
+            y: location.hash,
+            autoKill: false,
+          },
+          ease: "power2.out",
+        });
+      }
+    },
+    { scope: container, dependencies: [location] }
+  );
 
   const handleScrollTo = (targetId) => {
-    gsap.to(window, {
-      duration: 0.3,
-      scrollTo: {
-        y: targetId,
-        offsetY: 70,
-        autoKill: false,
-      },
-      ease: "power4.out",
-    });
+    if (location.pathname !== "/") {
+      // 2. If not on Home, navigate to Home with the ID attached (e.g. "/#about")
+      navigate(`/${targetId}`);
+    } else {
+      // 3. If already on Home, scroll immediately
+      gsap.to(window, {
+        duration: 0.3,
+        scrollTo: {
+          y: targetId,
+          autoKill: false,
+        },
+        ease: "power4.out",
+      });
+    }
   };
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" ref={container}>
       <Link
         to="/"
         className="navbar-name"
