@@ -1,5 +1,5 @@
 #about {
-    height: 145dvh;
+    height: 95dvh;
     text-align: center;
-    background-color: red;
+    background-color: var(--dark);
   }

@@ -7,6 +7,8 @@ import { ScrollToPlugin, ScrollTrigger, ScrollSmoother } from "gsap/all";
 import Footer from "../components/Footer";
 import "./Home.css";
 import "./Projects.css";
+import "./About.css";
+import "./Contact.css";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin, ScrollSmoother);
 
@@ -44,13 +46,14 @@ export default function Home() {
 
     otherPanels.forEach((p) => p.classList.remove("lastpanel-clicked"));
   };
-
+  //have the image widths augment when clicked and reduce when scroll resumes
+  //instead of listening for press events, listen for scroll events and click events
   useGSAP(
     () => {
       ScrollSmoother.create({
         wrapper: "#smooth-wrapper",
         content: "#smooth-content",
-        smooth: 1.2,
+        smooth: 1.4,
         smoothTouch: 0.1,
         effects: true,
       });
@@ -81,8 +84,8 @@ export default function Home() {
     <div className="main-container" ref={container} id="smooth-wrapper">
       <div id="smooth-content">
         <div id="home">
-        <div className="titlecontainer">
-          <h1>BRICE VAILLANT</h1>
+          <div className="titlecontainer">
+            <h1>BRICE VAILLANT</h1>
           </div>
           <div className="imgcontainer">
             <img
