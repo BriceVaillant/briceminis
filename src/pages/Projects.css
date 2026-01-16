@@ -21,7 +21,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   height: 100%;
   width: 20vw;
   aspect-ratio: 3456 / 5184;
@@ -49,22 +49,21 @@
   transform-origin: 50% 50%;
   object-fit: cover;
 }
-#projects .panel:active,
-#projects .panel-container:active {
-  width: 40vw;
-  transition-delay: 0.02s;
-}
 
-#projects .panel-container:last-child:active {
-  width: 40vw;
-  margin-left: -20vw;
+.lastimgclickedon {
+  width: 40vw !important;
+  margin-left: -20vw !important;
   transition: width var(--shortdelay) ease-out,
     margin-left var(--shortdelay) ease-out;
-  transition-delay: 0.02s;
 }
 
 #projects .lastpanel-clicked {
   transform: translateX(-20vw);
   transition: transform var(--shortdelay) ease-out;
-  transition-delay: var(--shortdelay);
+}
+
+
+.imgclickedon {
+  width: 40vw !important;
+  transition: transform var(--shortdelay) ease-out;
 }

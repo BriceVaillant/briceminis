@@ -8,7 +8,7 @@
   height: 200dvh;
   display: flex;
   align-items: center;
-  background-color: var(--dark);
+  background-color: var(--lighter);
 }
 
 #home .titlecontainer {
@@ -21,7 +21,6 @@
   justify-content: center;
   overflow: hidden;
 }
-
 #home h1 {
   font-size: 20rem;
   color: var(--light);
@@ -48,18 +47,23 @@
 
 
 #home .home-rightimg {
-  position: relative;
-  top: 5%;
-  right: 10%;
-  height: 70%;
+  position: absolute;
+  top: 15%;
+  right: 8%;
+  height: 60%;
   background-color: dark;
+  border-radius: 16px;
+  box-shadow: 3.3px 6.6px 6.6px hsl(0deg 0% 0% / 0.40)
 }
 #home .home-leftimg {
-  position: relative;
-  top: 30%;
-  left: -75%;
-  height: 35%;
+  position: absolute;
+  top: 65%;
+  right: 60%;
+  height: 20%;
   background-color: dark;
+
+  border-radius: 16px;
+  box-shadow: 3.3px 6.6px 6.6px hsl(0deg 0% 0% / 0.40)
 }
 
 
