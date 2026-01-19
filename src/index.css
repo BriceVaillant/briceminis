@@ -10,6 +10,7 @@
   --light: #bdbbaf;
   --dark: #696760;
   --darker: #312d2b;
+  --navbarheight: 10dvh;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,10 +18,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 html, body {
-  height: 95dvh;
   scroll-behavior: smooth;
+  background-color: var(--lighter);
 }
 body { 
   font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--dark);
 }

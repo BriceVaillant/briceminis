@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 10dvh;
+  height: var(--navbarheight);
   background-color: var(--darker);
   padding: 0.2rem 1rem 0.2rem 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);

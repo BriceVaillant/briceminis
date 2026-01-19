@@ -19,7 +19,9 @@ export default function Home() {
   const handleClicklastImg = (e) => {
     const lastImg = e.currentTarget;
     const container = lastImg.parentElement;
-    const otherPanels = document.querySelectorAll(".panel-container:not(:last-child)");
+    const otherPanels = document.querySelectorAll(
+      ".panel-container:not(:last-child)"
+    );
     if (lastImg.classList.contains("lastimgclickedon")) {
       lastImg.classList.remove("lastimgclickedon");
       container.classList.remove("lastimgclickedon");
@@ -93,8 +95,6 @@ export default function Home() {
     );
   };
 
-  //have the image widths augment when clicked and reduce when scroll resumes
-  //instead of listening for press events, listen for scroll events and click events
   useGSAP(
     () => {
       ScrollSmoother.create({
@@ -148,25 +148,30 @@ export default function Home() {
     <div className="main-container" ref={container} id="smooth-wrapper">
       <div id="smooth-content">
         <div id="home">
-          <div data-speed="0.90" className="titlecontainer">
+          <div className="titlecontainer">
             <h1>BRICE VAILLANT</h1>
           </div>
-          <div className="imgcontainer">
+          <div className="headerimg-container">
             <img
-              data-speed="1"
-              className="home-leftimg homeimg"
-              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_500,c_scale/v1767710569/IMG_fig20_00.jpg`}
-            />
-            <img
-              data-speed="1.1"
-              className="home-rightimg homeimg"
-              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_750,c_scale/v1767710569/IMG_fig15_00.jpg`}
+              className="headerimg"
+              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig13_00.jpg`}
+              alt="picture of a figurine"
             />
           </div>
         </div>
         <div id="about">
-          <h2>about Page</h2>
-          <p>This is the about page content.</p>
+          <div className="about-text-container">
+            <p>je suis blablabl </p>
+            <p> peint depuis 5 ans</p>
+          </div>
+          <div className="about-img-container">
+            <img
+              data-speed="1.05"
+              className="about-img"
+              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/v1767710569/IMG_fig15_00.jpg`}
+              alt="bricevaillant-bureau"
+            />
+          </div>
         </div>
         <div id="projects" onScroll={handleScroll}>
           <div id="projects-container">

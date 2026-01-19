@@ -52,13 +52,13 @@ export default function Gallery() {
             gsap.to(batch, {
               opacity: 1,
               y: 0,
-              duration: 0.8,
+              duration: 1.5,
               stagger: 0.15,
               ease: "power3.out",
               overwrite: true,
             });
           },
-          start: "top 90%",
+          start: "top 80%", //
           once: true,
         });
       }

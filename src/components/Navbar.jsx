@@ -13,7 +13,6 @@ export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
 
-
   useGSAP(
     () => {
       if (location.pathname === "/" && location.hash) {
