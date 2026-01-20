@@ -8,7 +8,7 @@
     justify-content: center;
     text-align: center;
     padding: 12dvh 6rem 4rem 6rem;
-    padding-top: (4dvh + var(--navbarheight));
+    padding-top: calc(4dvh + var(--navbarheight));
 }
 
   .minis-pictures-grid {

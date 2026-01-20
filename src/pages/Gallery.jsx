@@ -58,7 +58,7 @@ export default function Gallery() {
               overwrite: true,
             });
           },
-          start: "top 80%", //
+          start: "top 85%",
           once: true,
         });
       }

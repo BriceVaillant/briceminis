@@ -1,3 +1,6 @@
+:root {
+  --navbarheight: 8dvh;
+}
 .navbar {
   position: absolute;
   top: 0;

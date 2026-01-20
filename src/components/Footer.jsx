@@ -3,9 +3,9 @@ import "./Footer.css";
 
 export default function Footer() {
   return (
-    <div className="footer">
-      <div className="mailcontainer">
-        <h3>briceminis@gmail.com</h3>
+    <div id="footer">
+      <div className="mail-container">
+        <h3>BRICEMINIS@GMAIL.COM</h3>
       </div>
       <div className="sub-container">
         <div className="picture">
@@ -57,8 +57,8 @@ export default function Footer() {
             </svg>
           </a>
         </div>
-      </div>
       <p>© 2024 Brice Minis. All rights reserved.</p>
+      </div>
     </div>
   );
 }

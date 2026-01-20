@@ -15,6 +15,9 @@ export default function Home() {
   const container = useRef();
   const cloudinary_name = "dxrlfbw2k";
   const clickedScrollPos = useRef(0);
+  // have a link to open image details in the project images
+  // either opening a modal or getting the user in the gallery page
+  // const [selectedImage, setSelectedImage] = useState(null);
 
   const handleClicklastImg = (e) => {
     const lastImg = e.currentTarget;
@@ -148,25 +151,30 @@ export default function Home() {
     <div className="main-container" ref={container} id="smooth-wrapper">
       <div id="smooth-content">
         <div id="home">
-          <div className="titlecontainer">
+          <div className="title-container">
             <h1>BRICE VAILLANT</h1>
+            <p>Dedicated to the craft of miniature painting</p>
           </div>
           <div className="headerimg-container">
             <img
               className="headerimg"
               src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig13_00.jpg`}
-              alt="picture of a figurine"
+              alt="picture of an assortiment of figurine"
             />
           </div>
         </div>
         <div id="about">
           <div className="about-text-container">
-            <p>je suis blablabl </p>
-            <p> peint depuis 5 ans</p>
+            <h2>je suis Brice Vaillant </h2>
+            <p>peintre amateur depuis plus de six ans maintenant</p>
+            <p>retrouvez ici la plupart de mes créations</p>
+            <p></p>
+            <p></p>
+            <p>peindre c'est cool</p>
+            <p>you should try it!</p>
           </div>
           <div className="about-img-container">
             <img
-              data-speed="1.05"
               className="about-img"
               src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/v1767710569/IMG_fig15_00.jpg`}
               alt="bricevaillant-bureau"
@@ -181,6 +189,7 @@ export default function Home() {
                 src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig1_00.jpg`}
                 onClick={handleClickImg}
               />
+              <a href=""></a>
             </div>
             <div className="panel-container">
               <img
@@ -248,8 +257,41 @@ export default function Home() {
           </div>
         </div>
         <div id="contact">
-          <h2>contact Page</h2>
-          <p>This is the contact page content.</p>
+          <div className="contact-img-container">
+            <img
+              className="contact-img"
+              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/v1767710569/IMG_fig15_00.jpg`}
+              alt="bricevaillant-bureau"
+            />
+          </div>
+          <div className="contact-form-container">
+            <form name="contact" method="POST" data-netlify="true">
+
+                <label htmlFor="name">
+                  <input type="text" id="name" name="name" placeholder="NAME" />
+                </label>
+
+                <label htmlFor="email">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="E-MAIL"
+                  />
+                </label>
+
+                <label htmlFor="message">
+                  <textarea
+                    name="message"
+                    id="message"
+                    placeholder="MESSAGE"
+                  ></textarea>
+                </label>
+
+                <button type="submit">Send</button>
+
+            </form>
+          </div>
         </div>
         <Footer />
       </div>

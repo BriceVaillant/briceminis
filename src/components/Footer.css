@@ -1,39 +1,55 @@
-.footer {
-  height: 15dvh;
+:root {
+  --footerheight: 30dvh;
+}
+
+#footer {
+  height: var(--footerheight);
   background-color: var(--dark);
   position: relative;
   overflow: hidden;
 }
+#footer .mail-container {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: blue;
+}
 
-.sub-container {
+#footer h3 {
+  font-size: clamp(4rem, 5vw, 6rem);
+  font-weight: 900;
+  color: var(--darker);
+  font-weight: 400;
+}
+#footer .sub-container {
   position: relative;
-  height: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  height: 70%;
   padding: 0 20px;
 }
-.social-links {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+#footer .social-links {
   display: flex;
   gap: 20px;
   z-index: 10;
 }
 
-.social-btn {
-  display: block;
-  width: 2rem;
-  height: 2rem;
+#footer .social-btn {
+  width: 3rem;
+  height: 3rem;
   transition: transform 0.2s ease;
   color: var(--darker);
 }
 
-.social-btn:hover {
+#footer .social-btn:hover {
   transform: scale(1.1);
 }
 
-.social-btn svg {
+#footer .social-btn svg {
   width: 100%;
   height: 100%;
+}
+#footer a {
+  text-decoration: none;
+  color: inherit;
 }

@@ -6,11 +6,11 @@
   box-sizing: border-box;
 }
 :root {
-  --lighter: #e4e2d7;
-  --light: #bdbbaf;
+  --lighter: #f3f1e8;
+  --light: #d3d2ca;
   --dark: #696760;
   --darker: #312d2b;
-  --navbarheight: 10dvh;
+
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
