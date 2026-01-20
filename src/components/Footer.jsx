@@ -1,16 +1,67 @@
 // src/components/Navbar.jsx
+import { Link } from "react-router-dom";
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/all";
 import "./Footer.css";
 
+gsap.registerPlugin(ScrollToPlugin);
+
+
 export default function Footer() {
+
+  const handleScrollTo = (target) => {
+    gsap.to(window, { duration: 0.2, scrollTo: target, ease: "power2.out" });
+  };
+
   return (
     <div id="footer">
-      <div className="mail-container">
-        <h3>BRICEMINIS@GMAIL.COM</h3>
-      </div>
-      <div className="sub-container">
-        <div className="picture">
-          <img src="/assets/brice-mini-logo-white.png" alt="Brice Minis Logo" />
+      <div className="left-footer">
+        <div className="copyright">
+          <p>© 2024 Brice Minis. All rights reserved.</p>
         </div>
+      </div>
+      <div className="right-footer">
+        <div className="topright-container">
+          <h3>BRICEMINIS@GMAIL.COM</h3>
+        </div>
+        <div className="bottomright-container">
+          <ul className="footer-lead">
+            <li>
+              <button
+                className="footer-name"
+                onClick={() => handleScrollTo("#home")}
+              >
+                Home
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => handleScrollTo("#about")}
+                className="footer-name"
+              >
+                About Me
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => handleScrollTo("#projects")}
+                className="footer-name"
+              >
+                Projects
+              </button>
+            </li>
+            <Link to="/gallery" className="footer-name">
+              Gallery
+            </Link>
+            <li>
+              <button
+                onClick={() => handleScrollTo("#contact")}
+                className="footer-name"
+              >
+                Contact Me
+              </button>
+            </li>
+          </ul>
         <div className="social-links">
           <a
             href="https://linkedin.com/in/bricevaillant"
@@ -57,7 +108,7 @@ export default function Footer() {
             </svg>
           </a>
         </div>
-      <p>© 2024 Brice Minis. All rights reserved.</p>
+        </div>
       </div>
     </div>
   );
