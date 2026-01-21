@@ -6,62 +6,16 @@ import "./Footer.css";
 
 gsap.registerPlugin(ScrollToPlugin);
 
-
 export default function Footer() {
-
-  const handleScrollTo = (target) => {
-    gsap.to(window, { duration: 0.2, scrollTo: target, ease: "power2.out" });
-  };
-
   return (
     <div id="footer">
-      <div className="left-footer">
-        <div className="copyright">
-          <p>© 2024 Brice Minis. All rights reserved.</p>
-        </div>
+      <div className="topright-container">
+        <h3>BRICEMINIS@GMAIL.COM</h3>
       </div>
-      <div className="right-footer">
-        <div className="topright-container">
-          <h3>BRICEMINIS@GMAIL.COM</h3>
+      <div className="bottomright-container">
+        <div className="copyright">
+          <p>© 2024 Brice Minis. Made by me for me ❤️</p>
         </div>
-        <div className="bottomright-container">
-          <ul className="footer-lead">
-            <li>
-              <button
-                className="footer-name"
-                onClick={() => handleScrollTo("#home")}
-              >
-                Home
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => handleScrollTo("#about")}
-                className="footer-name"
-              >
-                About Me
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => handleScrollTo("#projects")}
-                className="footer-name"
-              >
-                Projects
-              </button>
-            </li>
-            <Link to="/gallery" className="footer-name">
-              Gallery
-            </Link>
-            <li>
-              <button
-                onClick={() => handleScrollTo("#contact")}
-                className="footer-name"
-              >
-                Contact Me
-              </button>
-            </li>
-          </ul>
         <div className="social-links">
           <a
             href="https://linkedin.com/in/bricevaillant"
@@ -107,7 +61,6 @@ export default function Footer() {
               />
             </svg>
           </a>
-        </div>
         </div>
       </div>
     </div>
