@@ -1,7 +1,7 @@
 // src/components/Navbar.jsx
 import "./Navbar.css";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollToPlugin } from "gsap/all";
@@ -12,6 +12,15 @@ export default function Navbar() {
   const container = useRef();
   const navigate = useNavigate();
   const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isOpen) setIsOpen(false);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isOpen]);
 
   useGSAP(
     () => {
@@ -26,12 +35,13 @@ export default function Navbar() {
         });
       }
     },
-    { scope: container, dependencies: [location] }
+    { scope: container, dependencies: [location] },
   );
 
   const handleScrollTo = (targetId) => {
     if (location.pathname !== "/") {
       navigate(`/${targetId}`);
+      setIsOpen(false);
     } else {
       gsap.to(window, {
         duration: 0.3,
@@ -41,7 +51,12 @@ export default function Navbar() {
         },
         ease: "power4.out",
       });
+      setIsOpen(false);
     }
+  };
+
+  const toggleMenu = () => {
+    setIsOpen((prev) => !prev);
   };
 
   return (
@@ -53,7 +68,8 @@ export default function Navbar() {
       >
         Brice Minis
       </Link>
-      <ul className="navbar-lead">
+
+      <ul className={`navbar-lead ${isOpen ? "active" : ""}`}>
         <li>
           <button
             className="navbar-name"
@@ -78,7 +94,11 @@ export default function Navbar() {
             Projects
           </button>
         </li>
-        <Link to="/gallery" className="navbar-name">
+        <Link
+          to="/gallery"
+          className="navbar-name"
+          onClick={() => setIsOpen(false)}
+        >
           Gallery
         </Link>
         <li>
@@ -90,6 +110,27 @@ export default function Navbar() {
           </button>
         </li>
       </ul>
+      <span className={` ${isOpen ? "whitespace" : ""}`}></span>
+      <button
+        className={`burger-icon ${isOpen ? "open" : ""}`}
+        onClick={toggleMenu}
+        aria-label="Toggle navigation"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+      </button>
     </nav>
   );
 }

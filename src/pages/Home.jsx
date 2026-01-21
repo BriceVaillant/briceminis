@@ -23,7 +23,7 @@ export default function Home() {
     const lastImg = e.currentTarget;
     const container = lastImg.parentElement;
     const otherPanels = document.querySelectorAll(
-      ".panel-container:not(:last-child)"
+      ".panel-container:not(:last-child)",
     );
     if (lastImg.classList.contains("lastimgclickedon")) {
       lastImg.classList.remove("lastimgclickedon");
@@ -55,15 +55,15 @@ export default function Home() {
       c.classList.remove(
         "imgclickedon",
         "lastpanel-clicked",
-        "lastimgclickedon"
-      )
+        "lastimgclickedon",
+      ),
     );
     allImgs.forEach((i) =>
       i.classList.remove(
         "imgclickedon",
         "lastpanel-clicked",
-        "lastimgclickedon"
-      )
+        "lastimgclickedon",
+      ),
     );
 
     clickedScrollPos.current = window.scrollY;
@@ -80,21 +80,22 @@ export default function Home() {
       return;
     }
 
+
     const allImgs = document.querySelectorAll(".panel");
     const allContainers = document.querySelectorAll(".panel-container");
     allContainers.forEach((c) =>
       c.classList.remove(
         "imgclickedon",
         "lastpanel-clicked",
-        "lastimgclickedon"
-      )
+        "lastimgclickedon",
+      ),
     );
     allImgs.forEach((i) =>
       i.classList.remove(
         "imgclickedon",
         "lastpanel-clicked",
-        "lastimgclickedon"
-      )
+        "lastimgclickedon",
+      ),
     );
   };
 
@@ -144,7 +145,7 @@ export default function Home() {
         },
       });
     },
-    { scope: container }
+    { scope: container },
   );
 
   return (
@@ -266,30 +267,28 @@ export default function Home() {
           </div>
           <div className="contact-form-container">
             <form name="contact" method="POST" data-netlify="true">
+              <label htmlFor="name">
+                <input type="text" id="name" name="name" placeholder="NAME" />
+              </label>
 
-                <label htmlFor="name">
-                  <input type="text" id="name" name="name" placeholder="NAME" />
-                </label>
+              <label htmlFor="email">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="E-MAIL"
+                />
+              </label>
 
-                <label htmlFor="email">
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="E-MAIL"
-                  />
-                </label>
+              <label htmlFor="message">
+                <textarea
+                  name="message"
+                  id="message"
+                  placeholder="MESSAGE"
+                ></textarea>
+              </label>
 
-                <label htmlFor="message">
-                  <textarea
-                    name="message"
-                    id="message"
-                    placeholder="MESSAGE"
-                  ></textarea>
-                </label>
-
-                <button type="submit">Send</button>
-
+              <button type="submit">Send</button>
             </form>
           </div>
         </div>
