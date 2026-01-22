@@ -15,9 +15,6 @@ export default function Home() {
   const container = useRef();
   const cloudinary_name = "dxrlfbw2k";
   const clickedScrollPos = useRef(0);
-  // have a link to open image details in the project images
-  // either opening a modal or getting the user in the gallery page
-  // const [selectedImage, setSelectedImage] = useState(null);
 
   const handleClicklastImg = (e) => {
     const lastImg = e.currentTarget;
@@ -80,7 +77,6 @@ export default function Home() {
       return;
     }
 
-
     const allImgs = document.querySelectorAll(".panel");
     const allContainers = document.querySelectorAll(".panel-container");
     allContainers.forEach((c) =>
@@ -118,8 +114,13 @@ export default function Home() {
             document.querySelector(".lastimgclickedon")
           ) {
             const diff = Math.abs(self.scroll() - clickedScrollPos.current);
+            let scrollSpeedCoefficient = 80;
 
-            if (diff > 50) {
+            if (window.innerWidth < 768) {
+              scrollSpeedCoefficient = 220;
+            }
+
+            if (diff > scrollSpeedCoefficient) {
               handleScroll();
             }
           }
@@ -132,17 +133,21 @@ export default function Home() {
 
       const track = document.querySelector("#projects-container");
 
-      gsap.to(track, {
-        x: () => -(track.scrollWidth - window.innerWidth),
-        ease: "none",
-        scrollTrigger: {
-          trigger: "#projects",
-          start: "top top",
-          pin: true,
-          scrub: 1,
-          end: () => "+=" + (track.scrollWidth - window.innerWidth + 300),
-          invalidateOnRefresh: true,
-        },
+      let mm = gsap.matchMedia();
+
+      mm.add("(min-width: 769px)", () => {
+        gsap.to(track, {
+          x: () => -(track.scrollWidth - window.innerWidth),
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#projects",
+            start: "top top",
+            pin: true,
+            scrub: 1,
+            end: () => "+=" + (track.scrollWidth - window.innerWidth + 300),
+            invalidateOnRefresh: true,
+          },
+        });
       });
     },
     { scope: container },
@@ -195,7 +200,7 @@ export default function Home() {
             <div className="panel-container">
               <img
                 className="panel"
-                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig2_00.jpg`}
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig15_00.jpg`}
                 onClick={handleClickImg}
               />
             </div>
@@ -250,7 +255,7 @@ export default function Home() {
             </div>
             <div className="panel-container">
               <img
-                className="panel lastimg"
+                className="panel"
                 src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710566/IMG_fig2_00.jpg`}
                 onClick={handleClicklastImg}
               />

@@ -28,8 +28,11 @@
   object-fit: cover;
   flex-shrink: 0;
   overflow: hidden;
-  transition: transform var(--shortdelay) ease-out,
-    width var(--shortdelay) ease-out, margin-left var(--shortdelay) ease-out;
+  transition:
+    transform var(--shortdelay) ease-out,
+    width var(--shortdelay) ease-out,
+    margin-left var(--shortdelay) ease-out,
+    height var(--shortdelay) ease-out;
 }
 
 #projects .panel {
@@ -37,8 +40,11 @@
   height: 100%;
   aspect-ratio: 3456 / 5184;
   object-fit: cover;
-  transition: transform var(--shortdelay) ease-out,
-    width var(--shortdelay) ease-out, margin-left var(--shortdelay) ease-out;
+  transition:
+    transform var(--shortdelay) ease-out,
+    width var(--shortdelay) ease-out,
+    margin-left var(--shortdelay) ease-out,
+    height var(--shortdelay) ease-out;
 }
 
 #projects .panel-container:hover {
@@ -53,8 +59,10 @@
 .lastimgclickedon {
   width: 40vw !important;
   margin-left: -20vw !important;
-  transition: width var(--shortdelay) ease-out,
-    margin-left var(--shortdelay) ease-out;
+  transition:
+    width var(--shortdelay) ease-out,
+    margin-left var(--shortdelay) ease-out,
+    height var(--shortdelay) ease-out;
 }
 
 #projects .lastpanel-clicked {
@@ -62,8 +70,47 @@
   transition: transform var(--shortdelay) ease-out;
 }
 
-
 .imgclickedon {
   width: 40vw !important;
   transition: transform var(--shortdelay) ease-out;
+}
+
+@media screen and (max-width: 768px) {
+  #projects {
+    height: max-content;
+    overflow: hidden;
+    flex-direction: column;
+    padding: 1dvh 0;
+  }
+  #projects-container {
+    flex-direction: column;
+    height: max-content;
+    width: 100%;
+    padding: 0;
+    gap: 1dvh;
+  }
+  #projects .panel-container {
+    height: 20dvh;
+    width: 100vw;
+    aspect-ratio: unset;
+  }
+  #projects .panel {
+    height: 20dvh;
+    width: 100vw;
+    aspect-ratio: unset;
+  }
+  .imgclickedon {
+    height: 60dvh !important;
+    width: 100vw !important;
+  }
+  .lastimgclickedon {
+    height: 50dvh !important;
+    width: 120vw !important;
+    margin-left: 0 !important;
+    margin-top: 0dvh !important;
+    transform: translateX(-50px);
+  }
+  #projects .lastpanel-clicked {
+    transform: translateY(0);
+  }
 }

@@ -79,19 +79,18 @@
   .navbar-lead {
     position: fixed;
     top: 0;
-    right: 0;
+    right: -100vw;
     height: 100vh;
     width: 50%;
     background-color: var(--darker);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transform: translateX(100%);
     transition: transform 0.4s ease-in-out;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
   }
 
   .navbar-lead.active {
-    transform: translateX(0);
+    transform: translateX(-100vw);
   }
 }
