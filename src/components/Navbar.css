@@ -68,7 +68,7 @@
     position: fixed;
   }
   .navbar-name {
-    font-size: 1.2rem;
+    font-size: clamp(2rem, 8vw, 4rem);
     color: var(--darker);
   }
   .burger-icon {
@@ -88,8 +88,12 @@
     align-items: center;
     transition: transform 0.4s ease-in-out;
     box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+    
   }
-
+  .navbar-lead .navbar-name {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    color: var(--lighter);
+  }
   .navbar-lead.active {
     transform: translateX(-100vw);
   }
