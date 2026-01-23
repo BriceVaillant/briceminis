@@ -22,7 +22,7 @@
   font: inherit;
   padding: 0;
   color: var(--lighter);
-  font-size: 1.5rem;
+  font-size: clamp(0.9rem, 2.4vw, 1.6rem);
   text-decoration: none;
   font-weight: 900;
 }
@@ -39,7 +39,7 @@
   display: inline-block;
   transition: transform var(--shortdelay) ease-out;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: clamp(0.5rem, 2.2vw, 1.2rem);
   color: var(--lighter);
 }
 .navbar-lead .navbar-name:hover {
@@ -54,8 +54,8 @@
   flex-direction: column;
   gap: 5px;
   z-index: 1001;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   color: var(--darker);
 }
 .burger-icon.open svg {

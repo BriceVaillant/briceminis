@@ -9,10 +9,10 @@ gsap.registerPlugin(ScrollToPlugin);
 export default function Footer() {
   return (
     <div id="footer">
-      <div className="topright-container">
+      <div className="top-container">
         <h3>BRICEMINIS@GMAIL.COM</h3>
       </div>
-      <div className="bottomright-container">
+      <div className="bottom-container">
         <div className="copyright">
           <p>© 2024 Brice Minis. Made by me for me ❤️</p>
         </div>

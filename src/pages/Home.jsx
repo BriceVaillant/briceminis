@@ -117,7 +117,7 @@ export default function Home() {
             let scrollSpeedCoefficient = 80;
 
             if (window.innerWidth < 768) {
-              scrollSpeedCoefficient = 220;
+              scrollSpeedCoefficient = 180;
             }
 
             if (diff > scrollSpeedCoefficient) {
@@ -164,20 +164,32 @@ export default function Home() {
           <div className="headerimg-container">
             <img
               className="headerimg"
-              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig13_00.jpg`}
+              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1000,c_scale/v1767710569/IMG_fig13_00.jpg`}
               alt="picture of an assortiment of figurine"
             />
           </div>
         </div>
         <div id="about">
           <div className="about-text-container">
-            <h2>je suis Brice Vaillant </h2>
-            <p>peintre amateur depuis plus de six ans maintenant</p>
-            <p>retrouvez ici la plupart de mes créations</p>
-            <p></p>
-            <p></p>
-            <p>peindre c'est cool</p>
-            <p>you should try it!</p>
+            <h2>I am Brice Vaillant!</h2>
+            <p>
+              Welcome to my portfolio, where I share the highlights of my
+              creative work.
+            </p>
+            <p>
+              I'm an amateur painter with over six years of experience in the
+              painting world now.
+            </p>
+            <p>
+              This gallery is a home for my journey, featuring a collection of
+              my favorite creations.
+            </p>
+
+            <p>
+              Constantly experimenting with new techniques and finding beauty in
+              the process is what drives me forward!
+            </p>
+            <p>You should try painting to!</p>
           </div>
           <div className="about-img-container">
             <img
@@ -192,7 +204,7 @@ export default function Home() {
             <div className="panel-container">
               <img
                 className="panel"
-                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig1_00.jpg`}
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1000,c_scale/v1767710569/IMG_fig1_00.jpg`}
                 onClick={handleClickImg}
               />
               <a href=""></a>
@@ -200,63 +212,63 @@ export default function Home() {
             <div className="panel-container">
               <img
                 className="panel"
-                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig15_00.jpg`}
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1000,c_scale/v1767710569/IMG_fig10_00.jpg`}
                 onClick={handleClickImg}
               />
             </div>
             <div className="panel-container">
               <img
                 className="panel"
-                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig3_00.jpg`}
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1000,c_scale/v1767710569/IMG_fig3_00.jpg`}
                 onClick={handleClickImg}
               />
             </div>
             <div className="panel-container">
               <img
                 className="panel"
-                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig4_00.jpg`}
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1000,c_scale/v1767710569/IMG_fig4_00.jpg`}
                 onClick={handleClickImg}
               />
             </div>
             <div className="panel-container">
               <img
                 className="panel"
-                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig5_00.jpg`}
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1000,c_scale/v1767710569/IMG_fig5_00.jpg`}
                 onClick={handleClickImg}
               />
             </div>
             <div className="panel-container">
               <img
                 className="panel"
-                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig6_00.jpg`}
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1000,c_scale/v1767710569/IMG_fig6_00.jpg`}
                 onClick={handleClickImg}
               />
             </div>
             <div className="panel-container">
               <img
                 className="panel"
-                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig7_00.jpg`}
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1000,c_scale/v1767710569/IMG_fig7_00.jpg`}
                 onClick={handleClickImg}
               />
             </div>
             <div className="panel-container">
               <img
                 className="panel"
-                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig8_00.jpg`}
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1000,c_scale/v1767710569/IMG_fig8_00.jpg`}
                 onClick={handleClickImg}
               />
             </div>
             <div className="panel-container">
               <img
                 className="panel"
-                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710569/IMG_fig9_00.jpg`}
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1000,c_scale/v1767710569/IMG_fig9_00.jpg`}
                 onClick={handleClickImg}
               />
             </div>
             <div className="panel-container">
               <img
                 className="panel"
-                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1500,c_scale/v1767710566/IMG_fig2_00.jpg`}
+                src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1000,c_scale/v1767710566/IMG_fig2_00.jpg`}
                 onClick={handleClicklastImg}
               />
             </div>
@@ -265,13 +277,14 @@ export default function Home() {
         <div id="contact">
           <div className="contact-img-container">
             <img
-              className="contact-img"
-              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/v1767710569/IMG_fig15_00.jpg`}
+              className="contact-img "
+              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/v1767710569/IMG_fig21_00.jpg`}
               alt="bricevaillant-bureau"
             />
           </div>
           <div className="contact-form-container">
             <form name="contact" method="POST" data-netlify="true">
+              <h4>Feel free to contact me if you have any question!</h4>
               <label htmlFor="name">
                 <input type="text" id="name" name="name" placeholder="NAME" />
               </label>

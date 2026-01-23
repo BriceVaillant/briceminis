@@ -1,59 +1,79 @@
 #about {
-    height: calc( 100dvh - var(--navbarheight) );
-    text-align: center;
-    background-color: var(--lighter);
-    display: flex;
-    flex-direction: row;
-  }
+  height: 100dvh;
+  text-align: center;
+  background-color: var(--lighter);
+  display: flex;
+  flex-direction: row;
+}
+
 #about .about-text-container {
-    width: 50%;
-    height: 100%;
-    display: flex;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  color: var(--dark);
+  gap: 0.5rem;
+}
+
+#about .about-text-container h2 {
+  font-size: clamp(3.3rem, 7vw, 6rem);
+  color: var(--darker);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+#about .about-text-container p {
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  color: var(--dark);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+#about .about-text-container p:last-child {
+  margin-top: 3rem;
+}
+
+#about .about-img-container {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0.3rem 0rem 0.3rem 0.3rem;
+}
+
+#about .about-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 768px) {
+  #about {
     flex-direction: column;
+    height: 100dvh;
+    justify-content: space-around;
     align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    box-sizing: border-box;
-    color: var(--dark);
   }
 
-  #about .about-text-container p {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-  }
+  #about .about-text-container,
   #about .about-img-container {
-    width: 50%;
-    height: 100%;
+    width: 100%;
+    height: auto;
+    gap: 1rem;
     display: flex;
-    align-items: center;
+    padding: 1rem;
     justify-content: center;
-    overflow: hidden;
-    
-  }
-  #about .about-img {
-    height: 80%;
-    border-radius: 24px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    align-items: space-around;
   }
 
-  @media screen and (max-width: 768px) {
-    #about {
-      flex-direction: column;
-      height: 100dvh;
-      justify-content: space-around;
-      align-items: center;
-    }
-    #about .about-text-container, #about .about-img-container {
-      width: 100%;
-      height: auto;
-      gap: 1rem;
-      display: flex;
-      padding: 1rem;
-      justify-content: center;
-      align-items: space-around;
-    }
-    #about .about-img {
-      display: none;
-    }
+  #about .about-img {
+    display: none;
   }
+}

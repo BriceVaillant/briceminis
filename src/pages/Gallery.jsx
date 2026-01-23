@@ -72,7 +72,7 @@ export default function Gallery() {
         {images.map((img) => (
           <div className="miniature-card" key={img.public_id}>
             <img
-              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/v${img.version}/${img.public_id}.${img.format}`}
+              src={`https://res.cloudinary.com/${cloudinary_name}/image/upload/h_1000,c_scale/v${img.version}/${img.public_id}.${img.format}`}
               alt={img.public_id}
               width={img.width / 10}
               height={img.height / 10}

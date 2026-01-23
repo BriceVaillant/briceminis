@@ -5,7 +5,7 @@
 #home {
   margin-top: var(--navbarheight);
   width: 100%;
-  height: calc(110dvh - var(--navbarheight));
+  height: calc(100dvh - var(--navbarheight));
   min-height: 600px;
   display: flex;
   flex-direction: column;
@@ -15,24 +15,13 @@
 
 #home .title-container {
   width: 100%;
-  height: 60dvh;
-  min-height: 485px;
-  max-height: 685px;
+  height: auto;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
   z-index: 3;
   padding-left: 0.5rem;
-}
-#home .headerimg-container {
-  width: 100%;
-  height: 50dvh;
-  min-height: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
 }
 #home p {
   font-size: clamp(1.2rem, 7vw, 2rem);
@@ -51,9 +40,7 @@
 #home h1 {
   font-size: clamp(6rem, 18vw, 16rem);
   width: 100%;
-  height: 55dvh;
-  min-height: 425px;
-  max-height: 600px;
+  min-height: 385px;
   color: var(--darker);
   text-align: left;
   line-height: 0.74;
@@ -64,24 +51,23 @@
   padding: 0rem 30% 0rem 0rem;
 }
 
-
+#home .headerimg-container {
+  width: 100%;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
 #home .headerimg {
   width: 100%;
   aspect-ratio: 1/1;
+  object-fit: cover;
   background-color: dark;
   transform-origin: -1em -3em;
-  /*box-shadow: 3.3px 6.6px 6.6px hsl(0deg 0% 0% / 0.40)*/
 }
-#home .home-leftimg {
-  position: absolute;
-  top: 65%;
-  right: 60%;
-  height: 20%;
-  background-color: dark;
 
-  border-radius: 16px;
-  box-shadow: 3.3px 6.6px 6.6px hsl(0deg 0% 0% / 0.4);
-}
+
 
 @media screen and (max-width: 768px) {
   #home .title-container {
@@ -89,16 +75,19 @@
     margin-top: 1dvh;
     min-height: 285px;
     max-height: 485px;
+
   }
 
   #home h1 {
     font-size: clamp(5.5rem, 16vw, 14rem);
-    height: 20dvh;
     min-height: auto;
     max-height: auto;
     letter-spacing: -0.5rem;
   }
   #home p {
+    margin-top: 2dvh;
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    width: 100%;
     text-align: end;
   }
   #home .headerimg-container {
@@ -112,4 +101,5 @@
     object-fit: cover;
     
   }
+  
 }
